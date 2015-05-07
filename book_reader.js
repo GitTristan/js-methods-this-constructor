@@ -1,24 +1,30 @@
 function BookReader(book) {
   this.book = book;
   this.currentPage = 0;
-}
+};
 
 BookReader.prototype.nextPage = function() {
-  if (this.currentPage < this.book.length - 1) {
-    this.currentPage += 1;
+  var nextPageIsValid = this.currentPage + 1 < this.book.length;
+  if (nextPageIsValid){
+    this.currentPage +=1;
   }
   return this.book[this.currentPage];
 };
+//   if (this.currentPage + 1 < this.book.length) {
+//     this.currentPage += 1;
+//   }
+//   return this.book[this.currentPage];
+// };
 
 BookReader.prototype.previousPage = function() {
   if (this.currentPage > 0){
-    this.currentPage = this.currentPage - 1;
+    this.currentPage -= 1;
   }
   return this.book[this.currentPage];
 };
 
 BookReader.prototype.pagesLeft = function() {
-  return (this.book.length - 1) - this.currentPage
+  return this.book.length - (this.currentPage + 1);
 };
 
 BookReader.prototype.encouragement = function() {
